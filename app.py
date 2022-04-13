@@ -2,9 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, session  
 from flask_pymongo import PyMongo
 from pymongo.server_api import ServerApi
-"""
 from bson.objectid import ObjectId
-"""
 import math
 
 app = Flask(__name__)
@@ -19,6 +17,12 @@ mongo = PyMongo(app)
 def index():
     return render_template ("index.html")
 
+
+@app.route('/getarticle', methods=['GET'])
+def get_article(article_id):
+    the_article = mongo.db.articles.find_one({"_id": ObjectId(article_id)})
+    return render_template("getarticle.html",
+                            article=the_article)
 
 
 if __name__ == '__main__':
