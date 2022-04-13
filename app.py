@@ -19,8 +19,10 @@ def index():
 @app.route('/getarticle')
 def get_article(article_id):
     the_article = mongo.db.articles.find_one({"_id": ObjectId(article_id)})
+    article_name = the_article['article_name']
     return render_template ("getarticle.html",
-    article=the_article)
+    article=the_article,
+    article_name=article_name)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
