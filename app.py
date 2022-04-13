@@ -12,9 +12,13 @@ mongo = PyMongo(app)
 @app.route('/')
 
 @app.route('/index')
-def index(article_id):
+def index():
+    return render_template ("index.html")
+
+@app.route('/getarticle')
+def get_article(article_id):
     the_article = mongo.db.articles.find({"_id": ObjectId(article_id)})
-    return render_template ("index.html",
+    return render_template ("getarticle.html",
     article=the_article)
 
 if __name__ == '__main__':
