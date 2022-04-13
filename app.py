@@ -20,7 +20,7 @@ def index():
 
 @app.route('/getarticle', methods=['GET'])
 def get_article(article_id):
-    the_article = mongo.db.articles.find_one({"_id": ObjectId(article_id)})
+    the_article = mongo.db.articles.find({"_id": ObjectId(article_id)})
     return render_template("getarticle.html",
                             article=the_article)
 
