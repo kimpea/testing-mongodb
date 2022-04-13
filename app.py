@@ -9,10 +9,9 @@ import math
 
 app = Flask(__name__)
 
+app.config["MONGO_DBNAME"] = 'article-manager'
+app.config["MONGO_URI"] = "mongodb+srv://kimpearton:<ehCCRM3DC6yY8Du>@cluster0.xuetz.mongodb.net/article-manager?retryWrites=true&w=majority"
 mongo = PyMongo(app)
-client = mongo.MongoClient("mongodb+srv://kimpearton:<ehCCRM3DC6yY8Du>@cluster0.xuetz.mongodb.net/article-manager?retryWrites=true&w=majority", server_api=ServerApi('1'))
-db = client.test
-
 
 @app.route('/')
 
