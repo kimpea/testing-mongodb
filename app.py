@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 
 @app.route('/index')
 def index(articles):
-    articles = mongo.db.articles.find()
+    articles = mongo.db.articles
     return render_template("index.html",
                             articles=articles)
 
