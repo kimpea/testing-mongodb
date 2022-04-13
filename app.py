@@ -8,18 +8,20 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'article-manager'
 app.config["MONGO_URI"] = 'mongodb+srv://admin:pWSlyvkLUOph5go0@articlescluster.e9swl.mongodb.net/article-manager'
 mongo = PyMongo(app)
+db = mongo.db
 
 @app.route('/')
 
 @app.route('/index')
 def index():
-    articles = mongo.db.articles.find()
+    articles = db.articles.find()
+    articles = list(articles)
     return render_template("index.html",
                             articles=articles)
 
 @app.route('/get_article/<article_id>')
 def get_article(article_id):
-    the_article = mongo.db.articles.find({"_id": ObjectId(article_id)})
+    the_article = db.articles.find({"_id": ObjectId(article_id)})
     return render_template("getarticle.html",
                             article=the_article)
 
