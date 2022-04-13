@@ -19,10 +19,18 @@ def index():
 
 
 @app.route('/getarticle', methods=['GET'])
-def get_article(article_id):
-    the_article = mongo.db.articles.find({"_id": ObjectId(article_id)})
+def get_article(article_name, article_content, article_author):
+    the_article = mongo.db.articles.find({
+        "article_name": article_name,
+        "article_content": article_content,
+        "article_author": article_author
+        })
     return render_template("getarticle.html",
-                            article=the_article)
+                            article=the_article,
+                            article_name=mongo.db.articles.find({"article_name": article_name}),
+                            article_content=article_content,
+                            article_author=article_author
+                            )
 
 
 if __name__ == '__main__':
