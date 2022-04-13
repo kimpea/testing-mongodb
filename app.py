@@ -12,9 +12,10 @@ mongo = PyMongo(app)
 @app.route('/')
 
 @app.route('/index')
-def index():
+def index(article_id):
+    the_article = mongo.db.articles.find({"_id": ObjectId(article_id)})
     return render_template ("index.html",
-    article=mongo.db.articles.find())
+    article=the_article)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
