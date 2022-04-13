@@ -15,7 +15,7 @@ def index():
     articles = db.articles
     article_data = list(articles.find({}))
     return render_template("index.html",
-                            articles=article_data)
+                            article_data=article_data)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
