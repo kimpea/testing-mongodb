@@ -19,13 +19,6 @@ def index():
     return render_template("index.html",
                             articles=articles)
 
-@app.route('/get_article/<article_id>')
-def get_article(article_id):
-    the_article = db.articles.find({"_id": ObjectId(article_id)})
-    return render_template("getarticle.html",
-                            article=the_article)
-
-
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT', 5000)),
