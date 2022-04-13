@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, session  
 from flask_pymongo import PyMongo
+from pymongo.server_api import ServerApi
 """
 from bson.objectid import ObjectId
 """
@@ -14,6 +15,10 @@ db = client.test
 
 
 @app.route('/')
+
+@app.route('/index')
+def index():
+    return render_template ("index.html")
 
 
 
