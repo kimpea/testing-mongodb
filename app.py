@@ -13,9 +13,8 @@ db = mongo.db
 @app.route('/')
 def index():
     articles = db.articles
-    article_data = list(articles.find({}))
     return render_template("index.html",
-                            article_data=article_data)
+                            articles=articles)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
