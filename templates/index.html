@@ -4,7 +4,7 @@
 <h1>Hello World</h1> 
 <ul>
     <li>List</li>
-    {% for article in articles %}
+    {% for article in articles.find() %}
     <li>{{ article.article_name }}, {{ article.article_content }}, {{ article.article_author }}</li>
     {% endfor %}
 </ul>
