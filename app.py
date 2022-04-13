@@ -12,7 +12,7 @@ db = mongo.db
 
 @app.route('/')
 def index():
-    articles = db.articles.find_one("_id": ObjectId("article_id"))
+    articles = db.articles.find_one({"_id": ObjectId(article_id)})
     return render_template("index.html",
                             articles=articles)
 
