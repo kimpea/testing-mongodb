@@ -3,7 +3,9 @@
 
 <h1>Hello World</h1> 
 <ul>
-    <li>{{ articles }}</li>
+    {% for article in articles %}
+    <li>{{ article.article_name }}, {{ article.article_content }}, {{ article.article_author }}</li>
+    {% endfor %}
 </ul>
 
 {% endblock %}
