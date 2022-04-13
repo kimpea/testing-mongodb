@@ -4,7 +4,7 @@
 <h1>Hello World</h1> 
 <ul>
     {% for article in articles %}
-    <li>{{ article.article_name }}</li>
+    <li>{{ url_for('get_article') }}</li>
     {% endfor %}
 </ul>
 

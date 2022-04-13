@@ -14,11 +14,14 @@ mongo = PyMongo(app)
 @app.route('/index')
 def index():
     articles = mongo.db.articles
-    article_name = articles.find(article_name)
     return render_template("index.html",
-                            article_name=article_name,
                             articles=articles)
 
+@app.route('/get_article/<article_id>')
+def get_article(article_id):
+    the_article = mongo.db.articles.find_one({"_id": ObjectId(article_id)})
+    return render_template("getarticle.html",
+                            article=the_article)
 
 
 if __name__ == '__main__':
