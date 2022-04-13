@@ -14,6 +14,8 @@ mongo = PyMongo(app)
 @app.route('/index')
 def index():
     articles = mongo.db.articles
+    for article in articles.find():
+        print(article)
     return render_template("index.html",
                             articles=articles)
 
