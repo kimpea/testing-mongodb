@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import math
@@ -10,13 +10,16 @@ app.config["MONGO_URI"] = 'mongodb+srv://admin:pWSlyvkLUOph5go0@articlescluster.
 mongo = PyMongo(app)
 db = mongo.db
 
-@app.route('/')
 
-@app.route('/index', methods=['GET'])
+@app.route('/')
 def index():
+    return render_template("index.html")
+
+@app.route('/get_article')
+def get_article():
     articles = db.articles.find()
     articles = list(articles)
-    return render_template("index.html",
+    return render_template("getarticle.html",
                             articles=articles)
 
 if __name__ == '__main__':
