@@ -12,7 +12,7 @@ db = mongo.db
 
 @app.route('/')
 
-@app.route('/index')
+@app.route('/index', methods=['GET'])
 def index():
     articles = db.articles.find()
     articles = list(articles)
