@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import math
@@ -11,6 +11,8 @@ db = mongo.db
 
 
 @app.route('/')
+
+@app.route('/index')
 def index():
     return render_template("index.html",
                             articles=db.articles.find())
