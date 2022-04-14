@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 CONNECTION_STRING = 'mongodb+srv://admin:x50ut2pFRpg4PaMu@articlescluster.e9swl.mongodb.net/article-manager'
-client = pymongo.MongoClient('CONNECTION_STRING')
+client = pymongo.MongoClient(CONNECTION_STRING)
 db = client.get_database('article-manager')
 articles_collection = pymongo.collection.Collection(db, 'articles')
 
