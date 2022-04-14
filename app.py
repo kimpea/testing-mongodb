@@ -11,10 +11,10 @@ client = pymongo.MongoClient('CONNECTION_STRING')
 db = client.get_database('article-manager')
 articles_collection = pymongo.collection.Collection(db, 'articles')
 
-@app.route('/test')
-def test():
+@app.route('/index')
+def index():
     db.db.collection.insert_one({"article_name": "Test Article"})
-    return "Connected to the data base!"
+    return render_template('index.html', message='Connected to database')
 
 
 
