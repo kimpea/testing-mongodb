@@ -11,11 +11,13 @@ db = mongo.db
 
 
 @app.route('/')
-def index(article_name):
+def index():
+    articles = db.articles.find()
     article_name = db.articles.find_one({"article_name": article_name})
 
     return render_template("index.html",
-                            article_name=article_name)
+                            article_name=article_name,
+                            articles=articles)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
