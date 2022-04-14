@@ -2,10 +2,8 @@
 {% block content %}
 
 <h1>Hello World</h1> 
-<ul>
-    {% for article in articles %}
-    <li>{{ article.article_name }}</li>
-    {% endfor %}
-</ul>
+{% for article in articles %}
+<a href="{{ url_for('get_article', article_id=article_id) }}">{{ article.article_name }}</a>
+{% endfor %}
 
 {% endblock %}

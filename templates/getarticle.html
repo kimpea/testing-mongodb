@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% for article in articles %}
 
-{{ article }}
-
-{% endfor %}
+<h1>{{ article.article_name }}</h1>
+<strong>{{ article.article_author }}</strong>
+<p>{{ article.article_content }}</p>
 
 {% endblock %}

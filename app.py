@@ -12,12 +12,16 @@ db = mongo.db
 
 @app.route('/')
 def index():
-    articles = db.articles
-    article_name = articles.find_one({"article_name": article_name})
+    return render_template("index.html")
 
-    return render_template("index.html",
-                            article_name=article_name,
-                            articles=articles)
+
+@app.route('/get_article/<article_id>')
+def get_article(article_id):
+    the_article = db.articles.find_one({"_id": ObjectId(article_id)})
+    return render_template("getarticle.html",
+                            article=the_article)
+
+                            
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
