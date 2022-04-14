@@ -11,8 +11,7 @@ db = mongo.db
 
 
 @app.route('/')
-def index(article_name):
-    articles = db.articles.find()
+def index(article_name, articles):
     article_name = db.articles.find_one({"article_name": article_name})
 
     return render_template("index.html",
