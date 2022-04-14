@@ -1,22 +1,22 @@
-import os
 from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import math
+import os
+
 
 app = Flask(__name__)
+app.config["MONGO_DBNAME"] = 'article-manager'
 app.config["MONGO_URI"] = 'mongodb+srv://admin:pWSlyvkLUOph5go0@articlescluster.e9swl.mongodb.net/article-manager'
 mongo = PyMongo(app)
 db = mongo.db
-
 
 @app.route('/')
 
 @app.route('/index')
 def index():
-    articles=db.articles.find()
     return render_template("index.html",
-                            articles=articles)
+                            articles=db.articles.find())
 
 
 @app.route('/get_article/<article_id>')
