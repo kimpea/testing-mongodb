@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for
-from flask_pymongo import pymongo
+from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import os
 
@@ -7,9 +7,9 @@ import os
 app = Flask(__name__)
 
 CONNECTION_STRING = 'mongodb+srv://admin:pWSlyvkLUOph5go0@articlescluster.e9swl.mongodb.net/article-manager'
-client = pymongo.MongoClient('CONNECTION_STRING')
+client = PyMongo.MongoClient('CONNECTION_STRING')
 db = client.get_database('article-manager')
-articles_collection = pymongo.collection.Collection(db, 'articles')
+articles_collection = PyMongo.collection.Collection(db, 'articles')
 
 @app.route('/index')
 def index():
