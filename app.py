@@ -1,23 +1,21 @@
-from flask import Flask, render_template, url_for
-from flask_pymongo import pymongo
+from flask import Flask, render_template, redirect, request, url_for, session
+from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import math
 import os
 
 
 app = Flask(__name__)
-
-CONNECTION_STRING = 'mongodb+srv://admin:x50ut2pFRpg4PaMu@articlescluster.e9swl.mongodb.net/article-manager'
-client = pymongo.MongoClient(CONNECTION_STRING)
-db = client.get_database('article-manager')
-articles_collection = pymongo.collection.Collection(db, 'articles')
+app.config["MONGO_DBNAME"] = 'article-manager'
+app.config["MONGO_URI"] = 'mongodb+srv://admin:pWSlyvkLUOph5go0@articlescluster.e9swl.mongodb.net/article-manager'
+mongo = PyMongo(app)
+db = mongo.db
 
 @app.route('/')
 
 @app.route('/index')
 def index():
-    db.db.collection.insert_one({"article_name": "Test Article"})
-    return render_template('index.html', message='Connected to database')
-
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
