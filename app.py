@@ -14,8 +14,9 @@ db = mongo.db
 
 @app.route('/index')
 def index():
+    articles=db.articles.find()
     return render_template("index.html",
-                            articles=db.articles.find())
+                            articles=articles)
 
 
 @app.route('/get_article/<article_id>')
