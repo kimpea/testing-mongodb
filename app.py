@@ -11,6 +11,8 @@ client = PyMongo.MongoClient('CONNECTION_STRING')
 db = client.get_database('article-manager')
 articles_collection = PyMongo.collection.Collection(db, 'articles')
 
+@app.route('/')
+
 @app.route('/index')
 def index():
     db.db.collection.insert_one({"article_name": "Test Article"})
