@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h3>My Articles</h3>
+<h5>{{message|safe}}</h5>
+
+{% for article in user_articles %}
+
 <section id="article-section">
-    {% for article in articles.find().limit(3) %}
     <div class="article-container">
         <h2 class="article-name">{{article.article_name}}</h2>
         <p class="article-author">by {{article.article_author}}</p>
         <p class="article-content">{{article.article_content[:350]}} ...</p>
         <a href="{{ url_for('get_article', article_id=article._id) }}">Read full article</a>
-    </div>  
-    {% endfor %}
+    </div>
 </section>
 
+{% endfor %}
 
 {% endblock %}

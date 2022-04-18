@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>{{message|safe}}</h3>
+<a href="{{ url_for('index') }}">Return To Homepage</a>
+<a href="{{ url_for('signin') }}">Sign In</a>
+
+{% endblock %}

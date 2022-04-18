@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
 <section id="article-section">
-    {% for article in articles.find().limit(3) %}
+    {% for article in articles.find() %}
     <div class="article-container">
         <h2 class="article-name">{{article.article_name}}</h2>
         <p class="article-author">by {{article.article_author}}</p>
@@ -11,6 +12,5 @@
     </div>  
     {% endfor %}
 </section>
-
 
 {% endblock %}

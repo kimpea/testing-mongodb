@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/styles.css') }}">
+    <title>Article Manager</title>
 </head>
 <body>
     <header>
-        <h1>Header</h1>
+        <h1 id="logo">Article Manager</h1>
+        <nav id="nav">
+            <ul id="nav-list">
+                <li class="nav-list-item"><a href="{{ url_for ('index') }}">Home</a></li>
+                <li class="nav-list-item"><a href="{{ url_for ('all_articles') }}">All Articles</a></li>
+                {% if 'username' in session %}
+                <li class="nav-list-item"><a href="{{ url_for ('add_article', username=session['username']) }}">Write Article</a></li>
+                <li class="nav-list-item"><a href="{{ url_for ('my_articles', username=session['username']) }}">My Articles</a></li>
+                <li class="nav-list-item"><a href="{{ url_for ('signout') }}">Sign Out</a></li>
+                {% else %}
+                <li class="nav-list-item"><a href="{{ url_for ('signin') }}">Sign In</a></li>
+                <li class="nav-list-item"><a href="{{ url_for ('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </header>
     <main>
         {% block content %}
         {% endblock %}
     </main>
     <footer>
-        <h1>Footer</h1>
     </footer>
 </body>
 </html>
